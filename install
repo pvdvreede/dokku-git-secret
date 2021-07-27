@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
+
+# install git-secret
+apt-get install -y git-secret

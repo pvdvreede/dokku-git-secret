@@ -1,0 +1,4 @@
+[plugin]
+description = "enable secure secrets in git repo with git secret"
+version = "0.1.0"
+[plugin.config]
