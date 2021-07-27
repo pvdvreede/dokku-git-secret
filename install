@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
 
-# install git-secret
-apt-get install -y git-secret
+# install git-secret and gnupg
+apt-get update
+apt-get install -y git-secret gnupg
+
+# generate gpg key for server
+gpg --gen-key # this is interactive so need to alter this
