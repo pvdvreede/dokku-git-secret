@@ -1,4 +1,12 @@
 #!/usr/bin/env bash
 set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
+source "$PLUGIN_CORE_AVAILABLE_PATH/common/functions"
 
-gpg --armor --export server@$(hostname).com
+cmd-git-secret-reveal() {
+  declare desc="reveals the servers gpg public key"
+  declare cmd="reveal"
+
+  gpg --armor --export $(hostname)
+}
+
+cmd-git-secret-reveal "$@"

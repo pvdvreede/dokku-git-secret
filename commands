@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+set -eo pipefail
+[[ $DOKKU_TRACE ]] && set -x
+
+case "$1" in
+  help | git-secret:help)
+    help_content_func () {
+      declare desc="manage secrets in repo with git-secret"
+      cat<<help_content
+    git-secret:reveal, Prints the server's gpg public key to stdout
+help_content
+    }
+
+    if [[ $1 = "git-secret:help" ]] ; then
+        echo -e 'Usage: dokku git-secret[:world] [<app>]'
+        echo ''
+        echo 'Say Hello World.'
+        echo ''
+        echo 'Example:'
+        echo ''
+        echo '$ dokku hello:world'
+        echo 'Hello world'
+        echo ''
+        echo 'Additional commands:'
+        help_content_func | sort | column -c2 -t -s,
+    else
+        help_content_func
+    fi
+    ;;
+
+  *)
+    exit $DOKKU_NOT_IMPLEMENTED_EXIT
+    ;;
+
+esac
