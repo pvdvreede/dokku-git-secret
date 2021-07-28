@@ -12,7 +12,7 @@ help_content
     }
 
     if [[ $1 = "gitsecret:help" ]] ; then
-        echo -e 'Usage: dokku git-secret:reveal'
+        echo -e 'Usage: dokku gitsecret:reveal'
         echo ''
         echo 'Manage git-secret gpg key for server.'
         echo ''
