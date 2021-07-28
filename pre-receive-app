@@ -9,13 +9,13 @@ if ! which git-secret >/dev/null 2>&1; then
   exit 0
 fi
 
-if ! git -C $TMP_WORK_DIR rev-parse >/dev/null 2>&1; then
-  dokku_log_warn "Directory is not a git repo, so cannot reveal any secrets for ${APP}!"
-  exit 0
-fi
+# if ! git -C $TMP_WORK_DIR rev-parse >/dev/null 2>&1; then
+#   dokku_log_warn "Directory is not a git repo, so cannot reveal any secrets for ${APP}!"
+#   exit 0
+# fi
 
-if ! -d "$TMP_WORK_DIR/.gitsecret"; then
-  dokku_log_info "gitsecret not enabled for ${APP}."
+if [ ! -d "$TMP_WORK_DIR/.gitsecret" ]; then
+  dokku_log_warn "gitsecret not enabled for ${APP}."
   exit 0
 fi
 
